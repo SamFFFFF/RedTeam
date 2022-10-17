@@ -19,7 +19,7 @@ subnet=192.168.4.0/24;nmap -n -sn -PS21,22,53,80,88,137,445,3389 $subnet -T4 --m
 
 [ and single host detail scan ]
 
-target=10.10.10.161;ports=$(nmap -n -p- --min-rate=1000 -T4 -Pn $target | grep open | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//);nmap -n -Pn -p$ports -sVC $target -oN Nmap_$target -v
+target=10.10.10.161;ports=$(nmap -n -p- --min-rate=1000 -T4 -Pn $target | grep open | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//);nmap -n -Pn -p$ports -sVC $target -oN Nmap_$target.txt -v
 
 
 # $subnet standized $(echo $subnet | cut -d'/' -f1)
