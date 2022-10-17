@@ -17,7 +17,7 @@ nmap -iL Nmap_$(echo $subnet | cut -d'/' -f1)_HostList.txt -n -Pn -sVC -oN Nmap_
 subnet=192.168.4.0/24;nmap -n -sn -PS21,22,53,80,88,137,445,3389 $subnet -T4 --min-rate=1000 -oN tmp.txt;cat tmp.txt | grep for | cut -d ' ' -f5 > Nmap_$(echo $subnet | cut -d'/' -f1)_HostList.txt ; rm tmp.txt;nmap -iL Nmap_$(echo $subnet | cut -d'/' -f1)_HostList.txt -n -Pn -sVC -oN Nmap_$(echo $subnet | cut -d'/' -f1)_FullScan.txt
 
 
-[ Aingle host detail scan ]
+[ Single host detail scan ]
 
 target=10.10.10.161;ports=$(nmap -n -p- --min-rate=1000 -T4 -Pn $target | grep open | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//);nmap -n -Pn -p$ports -sVC $target -oN Nmap_$target.txt -v
 
